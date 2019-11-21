@@ -69,8 +69,8 @@ class Student
     new_student = self.new_from_db(row)
   end
   
-  def new_from_db
-    
+  def new_from_db(row)
+    new_student = student.new(row[0])
   end
   
 
