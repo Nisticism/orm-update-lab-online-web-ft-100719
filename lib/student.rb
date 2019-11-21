@@ -65,7 +65,7 @@ class Student
       SELECT * FROM students WHERE name = ? LIMIT 1;
     SQL
     
-    row = DB[:conn].execute(sql, self.name)
+    row = DB[:conn].execute(sql, name)
     new_student = self.new_from_db(row)
   end
   
