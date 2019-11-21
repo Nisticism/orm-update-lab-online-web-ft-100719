@@ -17,7 +17,7 @@ class Student
   end
   
   def self.create_table
-    sql <<-SQL
+    sql = <<-SQL
       CREATE TABLE students (id INTEGER PRIMARY KEY, name TEXT, grade TEXT);
     SQL
     
@@ -25,7 +25,7 @@ class Student
   end
   
   def self.drop_table
-    sql <<-SQL 
+    sql = <<-SQL 
       DROP TABLE students IF EXISTS
     SQL
     
@@ -36,7 +36,7 @@ class Student
     if self.id 
       self.update
     else
-      sql <<-SQL
+      sql = <<-SQL
         INSERT INTO students (name, grade) VALUES (?, ?)
       SQL
         
@@ -53,7 +53,7 @@ class Student
   end
 
   def update
-    sql <<-SQL
+    sql = <<-SQL
       UPDATE students SET (name = ?, grade = ?) WHERE id = ?
     SQL
     
