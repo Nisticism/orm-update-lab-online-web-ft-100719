@@ -26,7 +26,7 @@ class Student
   
   def self.drop_table
     sql = <<-SQL 
-      DROP TABLE students IF EXISTS
+      DROP TABLE students IF EXISTS;
     SQL
     
     DB[:conn].execute(sql)
@@ -37,12 +37,12 @@ class Student
       self.update
     else
       sql = <<-SQL
-        INSERT INTO students (name, grade) VALUES (?, ?)
+        INSERT INTO students (name, grade) VALUES (?, ?);
       SQL
         
       DB[:conn].execute(sql, self.name, self.grade)
       
-      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+      @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students;")[0][0]
     end
   end
   
@@ -54,7 +54,7 @@ class Student
 
   def update
     sql = <<-SQL
-      UPDATE students SET name = ?, grade = ? WHERE id = ?
+      UPDATE students SET name = ?, grade = ? WHERE id = ?;
     SQL
     
     DB[:conn].execute(sql, self.name, self.grade, self.id)
@@ -62,7 +62,7 @@ class Student
   
   def self.find_by_name(name)
     sql = <<-SQL 
-      SELECT * FROM students WHERE name = ? LIMIT 1
+      SELECT * FROM students WHERE name = ? LIMIT 1;
     SQL
     
     row = DB[:conn].execute(sql, self.name)
